@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <h1>Goods Page</h1>
+   <div id="container"></div>
+   <script type="text/javascript">
+      //1.创建异步请求对象
+      var xhr=new XMLHttpRequest();
+      //2.设置状态监听
+      xhr.onreadystatechange=function(){//callback
+    	 if(xhr.readyState==4&&xhr.status==200){
+    		 console.log(xhr.responseText);
+    		 var jsonObj=JSON.parse(xhr.responseText);
+    		 console.log(jsonObj);
+    	 }
+      }
+      //3.建立连接
+      var url="goods/doFindGoods";
+      xhr.open("GET",url,true);//true表示异步
+      //4.发送请求
+      xhr.send();//get请求方式时,send方法内部不写数据
+   </script>
+</body>
+</html>
